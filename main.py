@@ -22,7 +22,7 @@ def start(cfg: DictConfig):
     # def transfer_to_agent_b():
     #     return agent_b
     agent = Agent(
-        model="microsoft/Phi-3.5-mini-instruct",
+        model=cfg['model'],
         name="Programmer Agent",
         instructions="You are a reasoning assistant. When presented with a problem, please break down the solution step by step, explaining your thought process clearly.",
         # functions=[],
@@ -33,7 +33,10 @@ def start(cfg: DictConfig):
     while True:
         user_input = input("\033[90mUser\033[0m: ")
         messages.append({"role": "user", "content": user_input})
-
+        # if len(messages) > 1:
+        #     del messages[-2]['sender']
+        #     del messages[-2]['function_call']
+        #     del messages[-2]['tool_calls']
         response = client.run(
             agent=agent,
             messages=messages,

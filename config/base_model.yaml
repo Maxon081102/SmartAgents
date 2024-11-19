@@ -1,2 +1,4 @@
 host: http://localhost:8000/v1
 key: EMPTY
+# model: microsoft/Phi-3.5-mini-instruct
+model: meta-llama/Llama-3.1-8B-Instruct
